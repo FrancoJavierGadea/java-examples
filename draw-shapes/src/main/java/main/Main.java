@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -94,6 +95,8 @@ public class Main {
                 super.paintComponent(graphics);
 
                 Graphics2D ctx = (Graphics2D) graphics;
+
+                ctx.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
                 for (Shape shape : shapes) {
                     
