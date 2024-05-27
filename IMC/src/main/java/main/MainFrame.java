@@ -9,10 +9,9 @@ import javax.swing.JTextField;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class MainFrame extends JFrame {
 
@@ -75,7 +74,7 @@ public class MainFrame extends JFrame {
         //MARK: Panel Content
         ArrayList<Component[]> components = new ArrayList<>();
         
-        components.addAll(List.of(
+        components.addAll(Arrays.asList(
             new Component[]{
                 weightInput,
                 new Label("Kg")
