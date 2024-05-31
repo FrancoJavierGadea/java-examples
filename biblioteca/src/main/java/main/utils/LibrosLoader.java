@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
@@ -42,17 +43,19 @@ public class LibrosLoader {
                 libro.setName((String) book.query("/book/title"));
                 libro.setISBN((String) book.query("/book/ISBN"));
                 libro.setPages((int) book.query("/book/pages"));
-
-                try {
-                    
-                    libro.setAuthor((String) book.query("/book/author/name"));
-
-                } catch (Exception e) {
-                    
-                }
-
+                libro.setAuthor((String) book.query("/book/author"));
                 libro.setYear((int) book.query("/book/year"));
                 libro.setSynopsis((String) book.query("/book/synopsis"));
+
+                List<String> tags = ((JSONArray) book.query("/book/tags")).toList()
+                    .stream()
+                    .map((tag) -> (String) tag)
+                    .collect(Collectors.toList());
+
+                libro.setStock((int) book.query("/book/stock"));
+                
+
+                libro.setTags(tags);
 
                 libros.add(libro);
             });

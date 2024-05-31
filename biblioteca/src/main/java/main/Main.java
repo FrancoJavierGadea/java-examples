@@ -1,7 +1,9 @@
 package main;
 
+import java.util.Arrays;
 import java.util.List;
 
+import main.biblioteca.Biblioteca;
 import main.biblioteca.Libro;
 import main.utils.LibrosLoader;
 
@@ -9,13 +11,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Libro> libros = LibrosLoader.getLibrosFromJSON();
+        Biblioteca biblioteca = new Biblioteca();
 
-        libros.stream().forEach(libro -> {
+        //Filtrar libros por author
+        //List<Libro> libros = biblioteca.getLibrosByAuthor("albert r. meyer");
 
-            System.out.println(libro.getISBN());
-        });
+        //Filtrar libros por tags
+        //List<Libro> libros = biblioteca.getLibrosByTags(Arrays.asList("Computer Science"));
+        List<Libro> libros = biblioteca.getLibrosByTags(Arrays.asList("Mathematics"));
 
-        System.out.println(libros.get(40));
+        System.out.println(libros);
     }
 }

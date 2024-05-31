@@ -83,7 +83,7 @@ public class Libro {
             "  pages: " + this.pages,
             "  author: " + this.author,
             "  tags: " + String.join(" - ", this.tags),
-            "  synopsis: " + this.synopsis.substring(0, 100) + "...",
+            "  synopsis: " + this.synopsis,
             "  year: " + this.year,
         "}");
     }
